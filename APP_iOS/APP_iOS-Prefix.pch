@@ -14,13 +14,9 @@
 
 #import "BaseViewController.h"
 #import "DefineConfig.h"
-#import "UIView+Frame.h"
-#import "UIButton+Block.h"
-#import "UIButton+WebCache.h"
-#import "UIImageView+WebCache.h"
+#import <YYKit/YYKit.h>
 #import "ShareValue.h"
 #import "ShareFunction.h"
-#import "MJExtension.h"
 #import "SVProgressHUD.h"
 #import "LNetworking.h"
 

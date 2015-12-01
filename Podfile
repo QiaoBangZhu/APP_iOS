@@ -1,14 +1,14 @@
 platform :ios, '7.0'
+inhibit_all_warnings!
 
 pod 'CYLTabBarController'
 pod 'AFNetworking'
-pod 'SDWebImage'
 pod 'SVProgressHUD'
-pod 'MJExtension'
 pod 'MJRefresh'
 pod 'SDCycleScrollView'
-#pod 'TMCache', '~> 2.1.0'
 pod 'IQKeyboardManager'
 pod 'LKDBHelper'
 pod 'NJKWebViewProgress'
 pod 'JCAlertView'
+pod 'DateTools'
+pod 'YYKit'

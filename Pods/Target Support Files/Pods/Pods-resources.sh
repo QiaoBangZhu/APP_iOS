@@ -58,12 +58,14 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "DateTools/DateTools/DateTools.bundle"
   install_resource "IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle"
   install_resource "JCAlertView/JCAlertView/JCAlertView.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
   install_resource "SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "DateTools/DateTools/DateTools.bundle"
   install_resource "IQKeyboardManager/IQKeyBoardManager/Resources/IQKeyboardManager.bundle"
   install_resource "JCAlertView/JCAlertView/JCAlertView.bundle"
   install_resource "MJRefresh/MJRefresh/MJRefresh.bundle"
