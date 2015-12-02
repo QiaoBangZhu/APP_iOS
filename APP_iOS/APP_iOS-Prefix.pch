@@ -13,11 +13,11 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #import "BaseViewController.h"
-#import "DefineConfig.h"
-#import <YYKit/YYKit.h>
-#import "ShareValue.h"
-#import "ShareFunction.h"
+#import "CCMacro.h"
+#import "CCShareValue.h"
+#import "CCUtility.h"
 #import "SVProgressHUD.h"
-#import "LNetworking.h"
+#import "CCNetworking.h"
+#import <YYKit/YYKit.h>
 
 #endif

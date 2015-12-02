@@ -34,7 +34,6 @@
     _progressProxy.webViewProxyDelegate = self;
     _progressProxy.progressDelegate = self;
     
-
     return self;
 }
 

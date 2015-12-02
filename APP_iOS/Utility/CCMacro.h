@@ -1,5 +1,5 @@
 //
-//  DefineConfig.h
+//  CCMacro.h
 //  APP_iOS
 //
 //  Created by Li on 15/8/11.

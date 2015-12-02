@@ -1,18 +1,18 @@
 //
-//  AudioPlayerInstance.m
-//  XMU1.0
+//  CCShareValue.m
+//  APP_iOS
 //
-//  Created by lihj on 14-5-6.
-//  Copyright (c) 2014年 DongXM. All rights reserved.
+//  Created by Li on 15/8/11.
+//  Copyright (c) 2015年 Li. All rights reserved.
 //
 
-#import "ShareValue.h"
+#import "CCShareValue.h"
 
-@implementation ShareValue
+@implementation CCShareValue
 
-+ (ShareValue *)instance
++ (CCShareValue *)instance
 {
-    static ShareValue *sharedInstance = nil;
+    static CCShareValue *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once (&onceToken, ^{
         sharedInstance = [[self alloc] init];

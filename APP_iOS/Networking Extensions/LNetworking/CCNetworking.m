@@ -1,16 +1,16 @@
 //
-//  LHttpRequest.m
+//  CCNetworking.m
 //  baseProject
 //
 //  Created by Li on 15/4/7.
 //  Copyright (c) 2015年 Li. All rights reserved.
 //
 
-#import "LNetworking.h"
+#import "CCNetworking.h"
 #import "NSObject+HXAddtions.h"
 #import "AFAppDotNetAPIClient.h"
 
-@implementation LNetworking
+@implementation CCNetworking
 
 + (void)GET:(NSString *)path parameters:(NSDictionary *)parameters success:(void (^)(NSDictionary *responseDic))success failure:(void (^)(NSError *error))failure {
 

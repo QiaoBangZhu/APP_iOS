@@ -1,6 +1,6 @@
 //
-//  LHttpRequest.h
-//  baseProject
+//  CCNetworking.h
+//  APP_iOS
 //
 //  Created by Li on 15/4/7.
 //  Copyright (c) 2015年 Li. All rights reserved.
@@ -15,7 +15,7 @@
  *
  */
 
-@interface LNetworking : NSObject
+@interface CCNetworking : NSObject
 
 /**
  *  Http Get 请求
