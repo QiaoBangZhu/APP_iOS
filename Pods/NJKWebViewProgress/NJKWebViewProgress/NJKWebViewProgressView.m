@@ -37,10 +37,9 @@
     _progressBarView.backgroundColor = tintColor;
     [self addSubview:_progressBarView];
     
-    _barAnimationDuration = 0.5f;
-    _fadeAnimationDuration = 0.57f;
+    _barAnimationDuration = 0.27f;
+    _fadeAnimationDuration = 0.27f;
     _fadeOutDelay = 0.1f;
-    _progress = 0.0f;
 }
 
 -(void)setProgress:(float)progress
@@ -50,10 +49,6 @@
 
 - (void)setProgress:(float)progress animated:(BOOL)animated
 {
-    if (progress < _progress) {
-        return;
-    }
-    _progress = progress;
     BOOL isGrowing = progress > 0.0;
     [UIView animateWithDuration:(isGrowing && animated) ? _barAnimationDuration : 0.0 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         CGRect frame = _progressBarView.frame;

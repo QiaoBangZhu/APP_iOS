@@ -1,73 +1,73 @@
 PODS:
-  - AFNetworking (2.6.3):
-    - AFNetworking/NSURLConnection (= 2.6.3)
-    - AFNetworking/NSURLSession (= 2.6.3)
-    - AFNetworking/Reachability (= 2.6.3)
-    - AFNetworking/Security (= 2.6.3)
-    - AFNetworking/Serialization (= 2.6.3)
-    - AFNetworking/UIKit (= 2.6.3)
-  - AFNetworking/NSURLConnection (2.6.3):
+  - ActionSheetPicker-3.0 (2.0.4)
+  - AFNetworking (3.0.4):
+    - AFNetworking/NSURLSession (= 3.0.4)
+    - AFNetworking/Reachability (= 3.0.4)
+    - AFNetworking/Security (= 3.0.4)
+    - AFNetworking/Serialization (= 3.0.4)
+    - AFNetworking/UIKit (= 3.0.4)
+  - AFNetworking/NSURLSession (3.0.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.6.3):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.6.3)
-  - AFNetworking/Security (2.6.3)
-  - AFNetworking/Serialization (2.6.3)
-  - AFNetworking/UIKit (2.6.3):
-    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (3.0.4)
+  - AFNetworking/Security (3.0.4)
+  - AFNetworking/Serialization (3.0.4)
+  - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
   - CYLTabBarController (1.0.5)
   - DateTools (1.7.0)
-  - FMDB (2.5):
-    - FMDB/standard (= 2.5)
-  - FMDB/common (2.5)
-  - FMDB/standard (2.5):
-    - FMDB/common
-  - IQKeyboardManager (3.3.4)
-  - JCAlertView (1.1.4)
-  - LKDBHelper (2.1.6):
-    - FMDB
-  - MJRefresh (3.0.7)
+  - IQKeyboardManager (3.3.5)
+  - JCAlertView (1.1.5)
+  - MJRefresh (3.1.0)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
-  - SDCycleScrollView (1.3)
+  - QBImagePickerController (3.4.0)
+  - SDCycleScrollView (1.6):
+    - SDWebImage (~> 3.7)
+  - SDWebImage (3.7.4):
+    - SDWebImage/Core (= 3.7.4)
+  - SDWebImage/Core (3.7.4)
   - SVProgressHUD (1.1.3)
-  - YYKit (0.9.6):
-    - YYKit/no-arc (= 0.9.6)
-  - YYKit/no-arc (0.9.6)
+  - WZLBadge (1.2.2)
+  - YYKit (0.9.10):
+    - YYKit/no-arc (= 0.9.10)
+  - YYKit/no-arc (0.9.10)
 
 DEPENDENCIES:
+  - ActionSheetPicker-3.0
   - AFNetworking
   - CYLTabBarController
   - DateTools
   - IQKeyboardManager
   - JCAlertView
-  - LKDBHelper
   - MJRefresh
   - NJKWebViewProgress
+  - QBImagePickerController
   - SDCycleScrollView
   - SVProgressHUD
+  - WZLBadge
   - YYKit
 
 SPEC CHECKSUMS:
-  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  ActionSheetPicker-3.0: 860466cb4a66854e6acb590071ecee404b48f49d
+  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
   CYLTabBarController: c758aba2b1aac34be1c217047079ab11b4a18f4a
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
-  IQKeyboardManager: ac803e61e5b50efae6b3aeedd95a02c7c7d3b2b3
-  JCAlertView: c028aa5bfe803aebd073476805eda3cfe9b47b20
-  LKDBHelper: 6df8665e44ff444836dcae89dcd095ffc7f9de48
-  MJRefresh: f3e1228ec3d38c7ba5208d58032631a52f39f495
+  IQKeyboardManager: 128bcb96b3ec03ff87942cdd7fa7f44491aa3d08
+  JCAlertView: c65a7b298b8b497b3db783d82f719b88f4914869
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
-  SDCycleScrollView: 90e43636fcc8e6a7f74e8b64d87418a8e96549b4
+  QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
+  SDCycleScrollView: 436ccec76258f9f280365af5c07b289a71382601
+  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
-  YYKit: 7e27f6b55883bfe3ec2b98e7ad9c38fcbb92a1c5
+  WZLBadge: 417ef25ded30ca7a3946bbcae398cb5431bb8652
+  YYKit: c220d01f6fe9fd4b4b379e2dad50fffd2b2ce633
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: d9ead4582cb31fb583d8b2d8996d0634c6d12eb4
+
+COCOAPODS: 1.0.0.beta.2

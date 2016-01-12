@@ -16,14 +16,6 @@
     [alert show];
 }
 
-+ (CGSize)sizeWithLabel:(UILabel *)label {
-    CGRect rect = [label.text boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX)
-                                       options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesFontLeading  |NSStringDrawingUsesLineFragmentOrigin
-                                    attributes:@{NSFontAttributeName:label.font}
-                                       context:nil];
-    return rect.size;
-}
-
 + (NSString *)strRandom:(NSInteger)count {
     NSString *strRandom = @"";
     

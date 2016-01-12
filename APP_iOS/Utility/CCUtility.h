@@ -17,11 +17,6 @@
 + (void)showAlert:(NSString *)msg;
 
 /**
- *  计算UILabel的Size
- */
-+ (CGSize)sizeWithLabel:(UILabel *)label;
-
-/**
  *  获取count位的随机数
  */
 + (NSString *)strRandom:(NSInteger)count;

@@ -28,6 +28,16 @@
     
     [self setLeftBarButtonWithTitle:@"Left" withBlock:^(NSInteger tag) {
         NSLog(@"heloo");
+
+        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:@"我是来测😄😄😄😄😄😄😄😄试的，哈哈哈哈哈哈哈哈😄"];
+        text.font = [UIFont systemFontOfSize:14];
+
+        
+        YYTextContainer *textContainer = [YYTextContainer containerWithSize:CGSizeMake(kScreenWidth, CGFLOAT_MAX)];
+        YYTextLayout *textLayout = [YYTextLayout layoutWithContainer:textContainer text:text];
+
+        NSLog(@"heloo");
+
     }];
 
     [self setRightBarButtonWithTitle:@"Right" withBlock:^(NSInteger tag) {

@@ -9,17 +9,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ActionSheetPicker-3.0.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CYLTabBarController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>DateTools.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>FMDB.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -34,11 +34,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>LKDBHelper.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>MJRefresh.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -49,7 +44,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-APP_iOS.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>QBImagePickerController-QBImagePicker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>QBImagePickerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -59,7 +64,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>WZLBadge.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -72,7 +87,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0722E1E4B6AB9234962C3206B90D94F0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>11FA2842887D6D1E8BF91AE8E4FBB115</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>16ACF35FDB8EAF2E5A8191EA1BCBEA01</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>26A3A8A2887C33F588562929FD141756</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -82,22 +112,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>323C48312579D245B160180B6B2FEAB1</key>
+		<key>3F9317F855B94A54B7C2E18FD5A2751D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3528FA1DBE3E5C6AB799FC7BEA473755</key>
+		<key>4C36B1F5D992ACDFD781AFC537E2D4B2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>410B25DF16EA5C5B3E2698F74F9625FB</key>
+		<key>53DFB5104169DD3A79C1F50EF828A394</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>55DBDD8B7D446F1D618F303A9FB53209</key>
+		<key>6A83D27CD65405464BD7A5B08D56AC5A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>806FBE446B62310363BC0B61A6927C63</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,27 +147,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9F12FB4A63E20F601CFB2E64A65B57C1</key>
+		<key>928353533005A4198EBDA5B700D37B64</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>AAA31AA0D2B37C8AF6F6041C53E7DE0E</key>
+		<key>9762F312C278F490EBFEC71FE01E6040</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B2082AC294E191EFDABCF3A89BB7629D</key>
+		<key>AE289928A62F8B59CFB824C2F97623A2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B4A3E08D49931371F7247521A50EAF79</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CE4C1370E2A8D378B37AB4F6F83CD3DF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
