@@ -1,7 +1,7 @@
 //
 // IQKeyboardManager.m
 // https://github.com/hackiftekhar/IQKeyboardManager
-// Copyright (c) 2013-15 Iftekhar Qurashi.
+// Copyright (c) 2013-16 Iftekhar Qurashi.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -29,6 +29,7 @@
 #import "IQToolbar.h"
 #import "IQBarButtonItem.h"
 #import "IQKeyboardManagerConstantsInternal.h"
+#import "IQUIScrollView+Additions.h"
 #import "IQUITextFieldView+Additions.h"
 #import "IQUIViewController+Additions.h"
 
@@ -50,38 +51,6 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 void _IQShowLog(NSString *logString);
 
 @interface IQKeyboardManager()<UIGestureRecognizerDelegate>
-
-//  Private helper methods
-- (void)adjustFrame;
-
-//  Private function to manipulate RootViewController's frame with animation.
-- (void)setRootViewFrame:(CGRect)frame;
-
-//  Keyboard Notification methods
-- (void)keyboardWillShow:(NSNotification*)aNotification;
-- (void)keyboardWillHide:(NSNotification*)aNotification;
-- (void)keyboardDidHide:(NSNotification*)aNotification;
-
-//  UITextField/UITextView Notification methods
-- (void)textFieldViewDidBeginEditing:(NSNotification*)notification;
-- (void)textFieldViewDidEndEditing:(NSNotification*)notification;
-- (void)textFieldViewDidChange:(NSNotification*)notification;
-
-//  Rotation notification
-- (void)willChangeStatusBarOrientation:(NSNotification*)aNotification;
-
-//  Tap Recognizer
-- (void)tapRecognized:(UITapGestureRecognizer*)gesture;
-
-//  Next/Previous/Done methods
-- (void)previousAction:(id)segmentedControl;
-- (void)nextAction:(id)segmentedControl;
-- (void)doneAction:(IQBarButtonItem*)barButton;
-
-//  Adding Removing IQToolbar methods
-- (NSArray*)responderViews;
-- (void)addToolbarIfRequired;
-- (void)removeToolbarIfRequired;
 
 @end
 
@@ -140,11 +109,6 @@ void _IQShowLog(NSString *logString);
 
     /*******************************************/
 
-    /** Default toolbar tintColor to be used within the project. Default is black. */
-    UIColor                 *_defaultToolbarTintColor;
-    
-    /*******************************************/
-
     /** Set of restricted classes for library */
     NSMutableSet            *_disabledClasses;
 
@@ -180,6 +144,7 @@ void _IQShowLog(NSString *logString);
 @synthesize toolbarManageBehaviour              =   _toolbarManageBehaviour;
 
 @synthesize shouldToolbarUsesTextFieldTintColor =   _shouldToolbarUsesTextFieldTintColor;
+@synthesize toolbarTintColor                    =   _toolbarTintColor;
 
 @synthesize shouldShowTextFieldPlaceholder      =   _shouldShowTextFieldPlaceholder;
 @synthesize placeholderFont                     =   _placeholderFont;
@@ -198,8 +163,6 @@ void _IQShowLog(NSString *logString);
 //Animation handling
 @synthesize shouldAdoptDefaultKeyboardAnimation =   _shouldAdoptDefaultKeyboardAnimation;
 @synthesize layoutIfNeededOnUpdate              =   _layoutIfNeededOnUpdate;
-//ScrollView handling
-@synthesize shouldRestoreScrollViewContentOffset=   _shouldRestoreScrollViewContentOffset;
 
 #pragma mark - Initializing functions
 
@@ -246,7 +209,6 @@ void _IQShowLog(NSString *logString);
             _animationDuration = 0.25;
             _animationCurve = UIViewAnimationCurveEaseInOut;
 			[self setKeyboardDistanceFromTextField:10.0];
-            _defaultToolbarTintColor = [UIColor blackColor];
             [self setCanAdjustTextView:NO];
             [self setShouldPlayInputClicks:NO];
             [self setShouldResignOnTouchOutside:NO];
@@ -256,7 +218,6 @@ void _IQShowLog(NSString *logString);
             [self setPreventShowingBottomBlankSpace:YES];
             [self setShouldShowTextFieldPlaceholder:YES];
             [self setShouldAdoptDefaultKeyboardAnimation:YES];
-            [self setShouldRestoreScrollViewContentOffset:NO];
             [self setToolbarManageBehaviour:IQAutoToolbarBySubviews];
             [self setLayoutIfNeededOnUpdate:NO];
 
@@ -405,10 +366,7 @@ void _IQShowLog(NSString *logString);
     if (controller == nil)  controller = [[self keyWindow] topMostController];
     
     //frame size needs to be adjusted on iOS8 due to orientation API changes.
-    if (IQ_IS_IOS8_OR_GREATER)
-    {
-        frame.size = controller.view.frame.size;
-    }
+    frame.size = controller.view.frame.size;
 
     //  If can't get rootViewController then printing warning to user.
     if (controller == nil)
@@ -449,28 +407,17 @@ void _IQShowLog(NSString *logString);
     UIViewController *rootController = [_textFieldView topMostController];
     if (rootController == nil)  rootController = [keyWindow topMostController];
     
-    //If it's iOS8 then we should do calculations according to portrait orientations.   //  (Bug ID: #64, #66)
-    
-#ifdef __IPHONE_8_0
-    #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_8_0
-        UIInterfaceOrientation interfaceOrientation = UIInterfaceOrientationPortrait;
-    #else
-        UIInterfaceOrientation interfaceOrientation = IQ_IS_IOS8_OR_GREATER ? UIInterfaceOrientationPortrait : [rootController interfaceOrientation];
-    #endif
-#else
-    UIInterfaceOrientation interfaceOrientation = [rootController interfaceOrientation];
-#endif
-    
     //  Converting Rectangle according to window bounds.
     CGRect textFieldViewRect = [[_textFieldView superview] convertRect:_textFieldView.frame toView:keyWindow];
     //  Getting RootViewRect.
     CGRect rootViewRect = [[rootController view] frame];
     //Getting statusBarFrame
-    CGFloat topLayoutGuide = 0;
+
     //Maintain keyboardDistanceFromTextField
     CGFloat keyboardDistanceFromTextField = (_textFieldView.keyboardDistanceFromTextField == kIQUseDefaultKeyboardDistance)?_keyboardDistanceFromTextField:_textFieldView.keyboardDistanceFromTextField;
     CGSize kbSize = _kbSize;
-    
+    kbSize.height += keyboardDistanceFromTextField;
+
     CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
     
     //  (Bug ID: #250)
@@ -489,21 +436,7 @@ void _IQShowLog(NSString *logString);
         layoutGuidePosition = IQLayoutGuidePositionBottom;
     }
     
-    switch (interfaceOrientation)
-    {
-        case UIInterfaceOrientationLandscapeLeft:
-        case UIInterfaceOrientationLandscapeRight:
-            topLayoutGuide = CGRectGetWidth(statusBarFrame);
-            kbSize.width += keyboardDistanceFromTextField;
-            break;
-        case UIInterfaceOrientationPortrait:
-        case UIInterfaceOrientationPortraitUpsideDown:
-            topLayoutGuide = CGRectGetHeight(statusBarFrame);
-            kbSize.height += keyboardDistanceFromTextField;
-            break;
-        default:
-            break;
-    }
+    CGFloat topLayoutGuide = CGRectGetHeight(statusBarFrame);
 
     CGFloat move = 0;
     //  +Move positive = textField is hidden.
@@ -513,44 +446,12 @@ void _IQShowLog(NSString *logString);
     if (layoutGuidePosition == IQLayoutGuidePositionBottom)
     {
         //  Calculating move position.
-        switch (interfaceOrientation)
-        {
-            case UIInterfaceOrientationLandscapeLeft:
-                move = CGRectGetMaxX(textFieldViewRect)-(CGRectGetWidth(keyWindow.frame)-kbSize.width);
-                break;
-            case UIInterfaceOrientationLandscapeRight:
-                move = kbSize.width-CGRectGetMinX(textFieldViewRect);
-                break;
-            case UIInterfaceOrientationPortrait:
-                move = CGRectGetMaxY(textFieldViewRect)-(CGRectGetHeight(keyWindow.frame)-kbSize.height);
-                break;
-            case UIInterfaceOrientationPortraitUpsideDown:
-                move = kbSize.height-CGRectGetMinY(textFieldViewRect);
-                break;
-            default:
-                break;
-        }
+        move = CGRectGetMaxY(textFieldViewRect)-(CGRectGetHeight(keyWindow.frame)-kbSize.height);
     }
     else
     {
         //  Calculating move position. Common for both normal and special cases.
-        switch (interfaceOrientation)
-        {
-            case UIInterfaceOrientationLandscapeLeft:
-                move = MIN(CGRectGetMinX(textFieldViewRect)-(topLayoutGuide+5), CGRectGetMaxX(textFieldViewRect)-(CGRectGetWidth(keyWindow.frame)-kbSize.width));
-                break;
-            case UIInterfaceOrientationLandscapeRight:
-                move = MIN(CGRectGetWidth(keyWindow.frame)-CGRectGetMaxX(textFieldViewRect)-(topLayoutGuide+5), kbSize.width-CGRectGetMinX(textFieldViewRect));
-                break;
-            case UIInterfaceOrientationPortrait:
-                move = MIN(CGRectGetMinY(textFieldViewRect)-(topLayoutGuide+5), CGRectGetMaxY(textFieldViewRect)-(CGRectGetHeight(keyWindow.frame)-kbSize.height));
-                break;
-            case UIInterfaceOrientationPortraitUpsideDown:
-                move = MIN(CGRectGetHeight(keyWindow.frame)-CGRectGetMaxY(textFieldViewRect)-(topLayoutGuide+5), kbSize.height-CGRectGetMinY(textFieldViewRect));
-                break;
-            default:
-                break;
-        }
+        move = MIN(CGRectGetMinY(textFieldViewRect)-(topLayoutGuide+5), CGRectGetMaxY(textFieldViewRect)-(CGRectGetHeight(keyWindow.frame)-kbSize.height));
     }
 	
     _IQShowLog([NSString stringWithFormat:@"Need to move: %.2f",move]);
@@ -571,7 +472,7 @@ void _IQShowLog(NSString *logString);
                 _lastScrollView.scrollIndicatorInsets = _startingScrollIndicatorInsets;
             } completion:NULL];
             
-            if (_shouldRestoreScrollViewContentOffset)
+            if (_lastScrollView.shouldRestoreScrollViewContentOffset)
             {
                 [_lastScrollView setContentOffset:_startingContentOffset animated:YES];
             }
@@ -591,7 +492,7 @@ void _IQShowLog(NSString *logString);
                 _lastScrollView.scrollIndicatorInsets = _startingScrollIndicatorInsets;
             } completion:NULL];
 
-            if (_shouldRestoreScrollViewContentOffset)
+            if (_lastScrollView.shouldRestoreScrollViewContentOffset)
             {
                 [_lastScrollView setContentOffset:_startingContentOffset animated:YES];
             }
@@ -611,7 +512,7 @@ void _IQShowLog(NSString *logString);
         _lastScrollView = superScrollView;
         _startingContentInsets = superScrollView.contentInset;
         _startingContentOffset = superScrollView.contentOffset;
-        _startingScrollIndicatorInsets = superScrollView.contentInset;
+        _startingScrollIndicatorInsets = superScrollView.scrollIndicatorInsets;
 
         _IQShowLog([NSString stringWithFormat:@"Saving %@ contentInset: %@ and contentOffset : %@",[_lastScrollView _IQDescription],NSStringFromUIEdgeInsets(_startingContentInsets),NSStringFromCGPoint(_startingContentOffset)]);
     }
@@ -654,26 +555,9 @@ void _IQShowLog(NSString *logString);
                     
                     //  Converting Rectangle according to window bounds.
                     CGRect currentTextFieldViewRect = [[_textFieldView superview] convertRect:_textFieldView.frame toView:keyWindow];
-                    CGFloat expectedFixDistance = shouldOffsetY;
                     
                     //Calculating expected fix distance which needs to be managed from navigation bar
-                    switch (interfaceOrientation)
-                    {
-                        case UIInterfaceOrientationLandscapeLeft:
-                            expectedFixDistance = CGRectGetMinX(currentTextFieldViewRect) - maintainTopLayout;
-                            break;
-                        case UIInterfaceOrientationLandscapeRight:
-                            expectedFixDistance = (CGRectGetWidth(keyWindow.frame)-CGRectGetMaxX(currentTextFieldViewRect)) - maintainTopLayout;
-                            break;
-                        case UIInterfaceOrientationPortrait:
-                            expectedFixDistance = CGRectGetMinY(currentTextFieldViewRect) - maintainTopLayout;
-                            break;
-                        case UIInterfaceOrientationPortraitUpsideDown:
-                            expectedFixDistance = (CGRectGetHeight(keyWindow.frame)-CGRectGetMaxY(currentTextFieldViewRect)) - maintainTopLayout;
-                            break;
-                        default:
-                            break;
-                    }
+                    CGFloat expectedFixDistance = CGRectGetMinY(currentTextFieldViewRect) - maintainTopLayout;
                     
                     //Now if expectedOffsetY (superScrollView.contentOffset.y + expectedFixDistance) is lower than current shouldOffsetY, which means we're in a position where navigationBar up and hide, then reducing shouldOffsetY with expectedOffsetY (superScrollView.contentOffset.y + expectedFixDistance)
                     shouldOffsetY = MIN(shouldOffsetY, superScrollView.contentOffset.y + expectedFixDistance);
@@ -705,27 +589,9 @@ void _IQShowLog(NSString *logString);
             
             //Updating contentInset
             {
-               CGFloat bottom = 0;
-                
                 CGRect lastScrollViewRect = [[_lastScrollView superview] convertRect:_lastScrollView.frame toView:keyWindow];
 
-                switch (interfaceOrientation)
-                {
-                    case UIInterfaceOrientationLandscapeLeft:
-                        bottom = kbSize.width-(CGRectGetWidth(keyWindow.frame)-CGRectGetMaxX(lastScrollViewRect));
-                        break;
-                    case UIInterfaceOrientationLandscapeRight:
-                        bottom = kbSize.width-CGRectGetMinX(lastScrollViewRect);
-                        break;
-                    case UIInterfaceOrientationPortrait:
-                        bottom = kbSize.height-(CGRectGetHeight(keyWindow.frame)-CGRectGetMaxY(lastScrollViewRect));
-                        break;
-                    case UIInterfaceOrientationPortraitUpsideDown:
-                        bottom = kbSize.height-CGRectGetMinY(lastScrollViewRect);
-                        break;
-                    default:
-                        break;
-                }
+                CGFloat bottom = kbSize.height-(CGRectGetHeight(keyWindow.frame)-CGRectGetMaxY(lastScrollViewRect));
 
                 // Update the insets so that the scroll vew doesn't shift incorrectly when the offset is near the bottom of the scroll view.
                 UIEdgeInsets movedInsets = _lastScrollView.contentInset;
@@ -790,21 +656,7 @@ void _IQShowLog(NSString *logString);
         //_isTextFieldViewFrameChanged  If frame is not change by library in past  (Bug ID: #92)
         if (_canAdjustTextView && (_lastScrollView == nil) && [_textFieldView isKindOfClass:[UITextView class]] && _keyboardManagerFlags.isTextFieldViewFrameChanged == NO)
         {
-            CGFloat textViewHeight = CGRectGetHeight(_textFieldView.frame);
-            
-            switch (interfaceOrientation)
-            {
-                case UIInterfaceOrientationLandscapeLeft:
-                case UIInterfaceOrientationLandscapeRight:
-                    textViewHeight = MIN(textViewHeight, (CGRectGetWidth(keyWindow.frame)-kbSize.width-(topLayoutGuide+5)));
-                    break;
-                case UIInterfaceOrientationPortrait:
-                case UIInterfaceOrientationPortraitUpsideDown:
-                    textViewHeight = MIN(textViewHeight, (CGRectGetHeight(keyWindow.frame)-kbSize.height-(topLayoutGuide+5)));
-                    break;
-                default:
-                    break;
-            }
+            CGFloat textViewHeight = MIN(CGRectGetHeight(_textFieldView.frame), (CGRectGetHeight(keyWindow.frame)-kbSize.height-(topLayoutGuide+5)));
             
             [UIView animateWithDuration:_animationDuration delay:0 options:(_animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
                 
@@ -835,18 +687,7 @@ void _IQShowLog(NSString *logString);
                 //  From now prevent keyboard manager to slide up the rootView to more than keyboard height. (Bug ID: #93)
                 if (_preventShowingBottomBlankSpace == YES)
                 {
-                    CGFloat minimumY = 0;
-                    
-                    switch (interfaceOrientation)
-                    {
-                        case UIInterfaceOrientationLandscapeLeft:
-                        case UIInterfaceOrientationLandscapeRight:
-                            minimumY = CGRectGetWidth(keyWindow.frame)-rootViewRect.size.height-topLayoutGuide-(kbSize.width-keyboardDistanceFromTextField);  break;
-                        case UIInterfaceOrientationPortrait:
-                        case UIInterfaceOrientationPortraitUpsideDown:
-                            minimumY = (CGRectGetHeight(keyWindow.frame)-rootViewRect.size.height-topLayoutGuide)/2-(kbSize.height-keyboardDistanceFromTextField);  break;
-                        default:    break;
-                    }
+                    CGFloat minimumY = (CGRectGetHeight(keyWindow.frame)-rootViewRect.size.height-topLayoutGuide)/2-(kbSize.height-keyboardDistanceFromTextField);
                     
                     rootViewRect.origin.y = MAX(rootViewRect.origin.y, minimumY);
                 }
@@ -880,26 +721,12 @@ void _IQShowLog(NSString *logString);
             //  +Positive or zero.
             if (move>=0)
             {
-                switch (interfaceOrientation)
-                {
-                    case UIInterfaceOrientationLandscapeLeft:       rootViewRect.origin.x -= move;  break;
-                    case UIInterfaceOrientationLandscapeRight:      rootViewRect.origin.x += move;  break;
-                    case UIInterfaceOrientationPortrait:            rootViewRect.origin.y -= move;  break;
-                    case UIInterfaceOrientationPortraitUpsideDown:  rootViewRect.origin.y += move;  break;
-                    default:    break;
-                }
+                rootViewRect.origin.y -= move;
                 
                 //  From now prevent keyboard manager to slide up the rootView to more than keyboard height. (Bug ID: #93)
                 if (_preventShowingBottomBlankSpace == YES)
                 {
-                    switch (interfaceOrientation)
-                    {
-                        case UIInterfaceOrientationLandscapeLeft:       rootViewRect.origin.x = MAX(rootViewRect.origin.x, MIN(0,-kbSize.width+keyboardDistanceFromTextField));  break;
-                        case UIInterfaceOrientationLandscapeRight:      rootViewRect.origin.x = MIN(rootViewRect.origin.x, +kbSize.width-keyboardDistanceFromTextField);  break;
-                        case UIInterfaceOrientationPortrait:            rootViewRect.origin.y = MAX(rootViewRect.origin.y, MIN(0, -kbSize.height+keyboardDistanceFromTextField));  break;
-                        case UIInterfaceOrientationPortraitUpsideDown:  rootViewRect.origin.y = MIN(rootViewRect.origin.y, +kbSize.height-keyboardDistanceFromTextField);  break;
-                        default:    break;
-                    }
+                    rootViewRect.origin.y = MAX(rootViewRect.origin.y, MIN(0, -kbSize.height+keyboardDistanceFromTextField));
                 }
                 
                 _IQShowLog(@"Moving Upward");
@@ -909,38 +736,13 @@ void _IQShowLog(NSString *logString);
             //  -Negative
             else
             {
-                CGFloat disturbDistance = 0;
-                
-                switch (interfaceOrientation)
-                {
-                    case UIInterfaceOrientationLandscapeLeft:
-                        disturbDistance = CGRectGetMinX(rootViewRect)-CGRectGetMinX(_topViewBeginRect);
-                        break;
-                    case UIInterfaceOrientationLandscapeRight:
-                        disturbDistance = CGRectGetMinX(_topViewBeginRect)-CGRectGetMinX(rootViewRect);
-                        break;
-                    case UIInterfaceOrientationPortrait:
-                        disturbDistance = CGRectGetMinY(rootViewRect)-CGRectGetMinY(_topViewBeginRect);
-                        break;
-                    case UIInterfaceOrientationPortraitUpsideDown:
-                        disturbDistance = CGRectGetMinY(_topViewBeginRect)-CGRectGetMinY(rootViewRect);
-                        break;
-                    default:
-                        break;
-                }
+                CGFloat disturbDistance = CGRectGetMinY(rootViewRect)-CGRectGetMinY(_topViewBeginRect);
                 
                 //  disturbDistance Negative = frame disturbed. Pull Request #3
                 //  disturbDistance positive = frame not disturbed.
                 if(disturbDistance<0)
                 {
-                    switch (interfaceOrientation)
-                    {
-                        case UIInterfaceOrientationLandscapeLeft:       rootViewRect.origin.x -= MAX(move, disturbDistance);  break;
-                        case UIInterfaceOrientationLandscapeRight:      rootViewRect.origin.x += MAX(move, disturbDistance);  break;
-                        case UIInterfaceOrientationPortrait:            rootViewRect.origin.y -= MAX(move, disturbDistance);  break;
-                        case UIInterfaceOrientationPortraitUpsideDown:  rootViewRect.origin.y += MAX(move, disturbDistance);  break;
-                        default:    break;
-                    }
+                    rootViewRect.origin.y -= MAX(move, disturbDistance);
                     
                     _IQShowLog(@"Moving Downward");
                     //  Setting adjusted rootViewRect
@@ -1068,7 +870,7 @@ void _IQShowLog(NSString *logString);
             _lastScrollView.contentInset = _startingContentInsets;
             _lastScrollView.scrollIndicatorInsets = _startingScrollIndicatorInsets;
             
-            if (_shouldRestoreScrollViewContentOffset)
+            if (_lastScrollView.shouldRestoreScrollViewContentOffset)
             {
                 _lastScrollView.contentOffset = _startingContentOffset;
             }
@@ -1099,10 +901,7 @@ void _IQShowLog(NSString *logString);
     if (!CGRectEqualToRect(_topViewBeginRect, CGRectZero) && _rootViewController)
     {
         //frame size needs to be adjusted on iOS8 due to orientation API changes.
-        if (IQ_IS_IOS8_OR_GREATER)
-        {
-            _topViewBeginRect.size = _rootViewController.view.frame.size;
-        }
+        _topViewBeginRect.size = _rootViewController.view.frame.size;
         
         //Used UIViewAnimationOptionBeginFromCurrentState to minimize strange animations.
         [UIView animateWithDuration:_animationDuration delay:0 options:(_animationCurve|UIViewAnimationOptionBeginFromCurrentState) animations:^{
@@ -1589,19 +1388,23 @@ void _IQShowLog(NSString *logString);
         //setInputAccessoryView: check   (Bug ID: #307)
         if ([textField respondsToSelector:@selector(setInputAccessoryView:)] && (![textField inputAccessoryView] || ([[textField inputAccessoryView] tag] == kIQPreviousNextButtonToolbarTag)))
         {
-            static UIView *doneToolbar = nil;
-            
-            if (doneToolbar == nil)
+            //Supporting Custom Done button image (Enhancement ID: #366)
+            if (_toolbarDoneBarButtonItemImage)
             {
-                //Now adding textField placeholder text as title of IQToolbar  (Enhancement ID: #27)
-                [textField addDoneOnKeyboardWithTarget:self action:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
-                doneToolbar = textField.inputAccessoryView;
-                doneToolbar.tag = kIQDoneButtonToolbarTag; //  (Bug ID: #78)
+                [textField addRightButtonOnKeyboardWithImage:_toolbarDoneBarButtonItemImage target:self action:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
+            }
+            //Supporting Custom Done button text (Enhancement ID: #209, #411, Bug ID: #376)
+            else if (_toolbarDoneBarButtonItemText)
+            {
+                [textField addRightButtonOnKeyboardWithText:_toolbarDoneBarButtonItemText target:self action:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
             }
             else
             {
-                textField.inputAccessoryView = doneToolbar;
+                //Now adding textField placeholder text as title of IQToolbar  (Enhancement ID: #27)
+                [textField addDoneOnKeyboardWithTarget:self action:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
             }
+
+            textField.inputAccessoryView.tag = kIQDoneButtonToolbarTag; //  (Bug ID: #78)
         }
         
         if ([textField.inputAccessoryView isKindOfClass:[IQToolbar class]] && textField.inputAccessoryView.tag == kIQDoneButtonToolbarTag)
@@ -1622,7 +1425,20 @@ void _IQShowLog(NSString *logString);
                     default:
                     {
                         toolbar.barStyle = UIBarStyleDefault;
-                        [toolbar setTintColor:_shouldToolbarUsesTextFieldTintColor?[textField tintColor]:_defaultToolbarTintColor];
+                        
+                        //Setting toolbar tintColor //  (Enhancement ID: #30)
+                        if (_shouldToolbarUsesTextFieldTintColor)
+                        {
+                            toolbar.tintColor = [textField tintColor];
+                        }
+                        else if (_toolbarTintColor)
+                        {
+                            toolbar.tintColor = _toolbarTintColor;
+                        }
+                        else
+                        {
+                            toolbar.tintColor = [UIColor blackColor];
+                        }
                     }
                         break;
                 }
@@ -1661,8 +1477,22 @@ void _IQShowLog(NSString *logString);
             //setInputAccessoryView: check   (Bug ID: #307)
             if ([textField respondsToSelector:@selector(setInputAccessoryView:)] && (![textField inputAccessoryView] || [[textField inputAccessoryView] tag] == kIQDoneButtonToolbarTag))
             {
-                //Now adding textField placeholder text as title of IQToolbar  (Enhancement ID: #27)
-                [textField addPreviousNextDoneOnKeyboardWithTarget:self previousAction:@selector(previousAction:) nextAction:@selector(nextAction:) doneAction:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
+                //Supporting Custom Done button image (Enhancement ID: #366)
+                if (_toolbarDoneBarButtonItemImage)
+                {
+                    [textField addPreviousNextRightOnKeyboardWithTarget:self rightButtonImage:_toolbarDoneBarButtonItemImage previousAction:@selector(previousAction:) nextAction:@selector(nextAction:) rightButtonAction:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
+                }
+                //Supporting Custom Done button text (Enhancement ID: #209, #411, Bug ID: #376)
+                else if (_toolbarDoneBarButtonItemText)
+                {
+                    [textField addPreviousNextRightOnKeyboardWithTarget:self rightButtonTitle:_toolbarDoneBarButtonItemText previousAction:@selector(previousAction:) nextAction:@selector(nextAction:) rightButtonAction:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
+                }
+                else
+                {
+                    //Now adding textField placeholder text as title of IQToolbar  (Enhancement ID: #27)
+                    [textField addPreviousNextDoneOnKeyboardWithTarget:self previousAction:@selector(previousAction:) nextAction:@selector(nextAction:) doneAction:@selector(doneAction:) shouldShowPlaceholder:_shouldShowTextFieldPlaceholder];
+                }
+
                 textField.inputAccessoryView.tag = kIQPreviousNextButtonToolbarTag; //  (Bug ID: #78)
             }
             
@@ -1686,8 +1516,18 @@ void _IQShowLog(NSString *logString);
                             toolbar.barStyle = UIBarStyleDefault;
                             
                             //Setting toolbar tintColor //  (Enhancement ID: #30)
-                            [toolbar setTintColor:_shouldToolbarUsesTextFieldTintColor?[textField tintColor]:_defaultToolbarTintColor];
-                            
+                            if (_shouldToolbarUsesTextFieldTintColor)
+                            {
+                                toolbar.tintColor = [textField tintColor];
+                            }
+                            else if (_toolbarTintColor)
+                            {
+                                toolbar.tintColor = _toolbarTintColor;
+                            }
+                            else
+                            {
+                                toolbar.tintColor = [UIColor blackColor];
+                            }
                         }
                             break;
                     }
@@ -1824,11 +1664,21 @@ void _IQShowLog(NSString *logString);
 /** Disable adjusting view in disabledClass     */
 -(void)disableInViewControllerClass:(Class)disabledClass
 {
+    [self disableDistanceHandlingInViewControllerClass:disabledClass];
+}
+
+-(void)disableDistanceHandlingInViewControllerClass:(nonnull Class)disabledClass
+{
     [_disabledClasses addObject:disabledClass];
 }
 
 /** Re-enable adjusting textField in disabledClass  */
 -(void)removeDisableInViewControllerClass:(Class)disabledClass
+{
+    [self removeDisableDistanceHandlingInViewControllerClass:disabledClass];
+}
+
+-(void)removeDisableDistanceHandlingInViewControllerClass:(nonnull Class)disabledClass
 {
     [_disabledClasses removeObject:disabledClass];
 }

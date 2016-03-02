@@ -17,7 +17,7 @@
 #import "CCShareValue.h"
 #import "CCUtility.h"
 #import "SVProgressHUD.h"
-#import "CCNetworking.h"
+#import "CCNetwork.h"
 #import <YYKit/YYKit.h>
 
 #endif

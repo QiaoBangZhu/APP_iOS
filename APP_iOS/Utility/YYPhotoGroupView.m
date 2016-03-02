@@ -535,7 +535,7 @@
     } else {
         _background.image = _snapshorImageHideFromView;
     }
-
+    
     
     if (isFromImageClipped) {
         [cell scrollToTopAnimated:NO];
@@ -632,10 +632,10 @@
 
 
 - (void)hidePager {
-        [UIView animateWithDuration:0.3 delay:0.8 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut animations:^{
-            _pager.alpha = 0;
-        }completion:^(BOOL finish) {
-        }];
+    [UIView animateWithDuration:0.3 delay:0.8 options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut animations:^{
+        _pager.alpha = 0;
+    }completion:^(BOOL finish) {
+    }];
 }
 
 /// enqueue invisible cells for reuse
@@ -749,7 +749,7 @@
     if (!tile.imageView.image) return;
     
     // try to save original image data if the image contains multi-frame (such as GIF/APNG)
-    id imageItem = [tile.imageView.image dataRepresentation];
+    id imageItem = [tile.imageView.image imageDataRepresentation];
     YYImageType type = YYImageDetectType((__bridge CFDataRef)(imageItem));
     if (type != YYImageTypePNG &&
         type != YYImageTypeJPEG &&

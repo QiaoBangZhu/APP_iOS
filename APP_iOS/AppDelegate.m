@@ -22,20 +22,20 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
+    
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
     
     [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
     [[IQKeyboardManager sharedManager] setEnableAutoToolbar:NO];
     [[IQKeyboardManager sharedManager] setShouldResignOnTouchOutside:YES];
-
+    
     [self customizeInterface];
     
     TestViewController *vc = [TestViewController new];
     InteractivePopNavigationController *nav = [[InteractivePopNavigationController alloc] initWithRootViewController:vc];
     self.window.rootViewController = nav;
     [self.window makeKeyAndVisible];
-
+    
     return YES;
 }
 
@@ -45,10 +45,10 @@
     UINavigationBar *navigationBarAppearance = [UINavigationBar appearance];
     [navigationBarAppearance setBackgroundImage:[UIImage imageWithColor:kRGBCOLOR(254, 84, 0)] forBarMetrics:UIBarMetricsDefault];
     
-//    可以去除NavBar下面那条线
-//    if ([UINavigationBar instancesRespondToSelector:@selector(setShadowImage:)]) {
-//        [navigationBarAppearance setShadowImage:[[UIImage alloc] init]];
-//    }
+    //    可以去除NavBar下面那条线
+    //    if ([UINavigationBar instancesRespondToSelector:@selector(setShadowImage:)]) {
+    //        [navigationBarAppearance setShadowImage:[[UIImage alloc] init]];
+    //    }
     
     //设置naviegationBar的文本属性
     NSDictionary *textAttributes = @{

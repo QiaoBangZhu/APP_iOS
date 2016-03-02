@@ -1,5 +1,5 @@
 PODS:
-  - ActionSheetPicker-3.0 (2.0.4)
+  - ActionSheetPicker-3.0 (2.0.5)
   - AFNetworking (3.0.4):
     - AFNetworking/NSURLSession (= 3.0.4)
     - AFNetworking/Reachability (= 3.0.4)
@@ -15,9 +15,9 @@ PODS:
   - AFNetworking/Serialization (3.0.4)
   - AFNetworking/UIKit (3.0.4):
     - AFNetworking/NSURLSession
-  - CYLTabBarController (1.0.5)
+  - CYLTabBarController (1.2.1)
   - DateTools (1.7.0)
-  - IQKeyboardManager (3.3.5)
+  - IQKeyboardManager (4.0.0)
   - JCAlertView (1.1.5)
   - MJRefresh (3.1.0)
   - NJKWebViewProgress (0.2.3):
@@ -26,16 +26,16 @@ PODS:
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - QBImagePickerController (3.4.0)
-  - SDCycleScrollView (1.6):
+  - SDCycleScrollView (1.61):
     - SDWebImage (~> 3.7)
-  - SDWebImage (3.7.4):
-    - SDWebImage/Core (= 3.7.4)
-  - SDWebImage/Core (3.7.4)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
   - SVProgressHUD (1.1.3)
-  - WZLBadge (1.2.2)
-  - YYKit (0.9.10):
-    - YYKit/no-arc (= 0.9.10)
-  - YYKit/no-arc (0.9.10)
+  - WZLBadge (1.2.3)
+  - YYKit (1.0.1):
+    - YYKit/no-arc (= 1.0.1)
+  - YYKit/no-arc (1.0.1)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -53,21 +53,19 @@ DEPENDENCIES:
   - YYKit
 
 SPEC CHECKSUMS:
-  ActionSheetPicker-3.0: 860466cb4a66854e6acb590071ecee404b48f49d
+  ActionSheetPicker-3.0: 8312778b6815578e6a86d630fbcf31dc94c534e7
   AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  CYLTabBarController: c758aba2b1aac34be1c217047079ab11b4a18f4a
+  CYLTabBarController: 62ee700d59dc1f42777053e6254933f499ab4564
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  IQKeyboardManager: 128bcb96b3ec03ff87942cdd7fa7f44491aa3d08
+  IQKeyboardManager: b91928f7927ba55a5829b4dcf4b7a6736ac9fc22
   JCAlertView: c65a7b298b8b497b3db783d82f719b88f4914869
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
-  SDCycleScrollView: 436ccec76258f9f280365af5c07b289a71382601
-  SDWebImage: 247edd7dd80dd6124197b0d6a17846fe9d1df968
+  SDCycleScrollView: a002d85b30cfa9d0ac74069cd3973ca19ff4f22f
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
-  WZLBadge: 417ef25ded30ca7a3946bbcae398cb5431bb8652
-  YYKit: c220d01f6fe9fd4b4b379e2dad50fffd2b2ce633
+  WZLBadge: 2403831b70e65fefc526790c9dc3ca7f99992bf2
+  YYKit: 8b618ca8d8cefa534d8d4fe2cad10fe9fbd030ed
 
-PODFILE CHECKSUM: d9ead4582cb31fb583d8b2d8996d0634c6d12eb4
-
-COCOAPODS: 1.0.0.beta.2
+COCOAPODS: 0.39.0

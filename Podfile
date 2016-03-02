@@ -18,3 +18,5 @@ target "APP_iOS" do
     pod 'QBImagePickerController' #Version >= 3.0.0 : iOS 8 or later (Using PhotoKit) Version < 3.0.0 : iOS 6 or later (Using AssetsLibrary)
     
 end
+
+

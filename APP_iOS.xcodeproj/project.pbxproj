@@ -16,19 +16,17 @@
 		0B1C76241C0D861E00114407 /* BaseRequestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C76191C0D861E00114407 /* BaseRequestModel.m */; };
 		0B1C76251C0D861E00114407 /* BaseResponseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C761C1C0D861E00114407 /* BaseResponseModel.m */; };
 		0B1C762D1C0D923D00114407 /* CCWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1C762C1C0D923D00114407 /* CCWebViewController.m */; };
-		0B56B3D91BF433C10067EBEA /* AFAppDotNetAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B56B3D81BF433C10067EBEA /* AFAppDotNetAPIClient.m */; };
-		0B56B3DF1BF4347F0067EBEA /* CCNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B56B3DC1BF4347F0067EBEA /* CCNetworking.m */; };
-		0B56B3E01BF4347F0067EBEA /* NSObject+HXAddtions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B56B3DE1BF4347F0067EBEA /* NSObject+HXAddtions.m */; };
 		0BB606B21B7989B400D42A16 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB606B11B7989B400D42A16 /* main.m */; };
 		0BB606B51B7989B400D42A16 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB606B41B7989B400D42A16 /* AppDelegate.m */; };
 		0BB606BD1B7989B400D42A16 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0BB606BC1B7989B400D42A16 /* Images.xcassets */; };
-		0BB606E11B799B1500D42A16 /* CoreAleetViewManagerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB606E01B799B1500D42A16 /* CoreAleetViewManagerVC.m */; };
 		0BB606E51B799B5300D42A16 /* InteractivePopNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB606E41B799B5300D42A16 /* InteractivePopNavigationController.m */; };
 		0BB606F11B799BD100D42A16 /* SvUDIDTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB606F01B799BD100D42A16 /* SvUDIDTools.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		0BB606F41B799D0600D42A16 /* CCUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB606F31B799D0600D42A16 /* CCUtility.m */; };
 		0BB608521B79A13000D42A16 /* CCShareValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB608511B79A13000D42A16 /* CCShareValue.m */; };
 		0BB6086E1B79CF6800D42A16 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BB6086D1B79CF6800D42A16 /* KeychainAccessGroups.plist */; };
 		0BB608731B79D6E500D42A16 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BB608721B79D6E500D42A16 /* NullSafe.m */; };
+		0BBCFF4F1C86827900ABE186 /* CCNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCFF4C1C86827900ABE186 /* CCNetwork.m */; };
+		0BBCFF501C86827900ABE186 /* NSJSONSerialization+LYJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BBCFF4E1C86827900ABE186 /* NSJSONSerialization+LYJSON.m */; };
 		1C8F3CF0E669EA3E45A161F1 /* libPods-APP_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 162FC064ADBEBDF329190BBA /* libPods-APP_iOS.a */; };
 /* End PBXBuildFile section */
 
@@ -50,20 +48,12 @@
 		0B1C761C1C0D861E00114407 /* BaseResponseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseResponseModel.m; sourceTree = "<group>"; };
 		0B1C762B1C0D923D00114407 /* CCWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCWebViewController.h; sourceTree = "<group>"; };
 		0B1C762C1C0D923D00114407 /* CCWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCWebViewController.m; sourceTree = "<group>"; };
-		0B56B3D71BF433C10067EBEA /* AFAppDotNetAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFAppDotNetAPIClient.h; sourceTree = "<group>"; };
-		0B56B3D81BF433C10067EBEA /* AFAppDotNetAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFAppDotNetAPIClient.m; sourceTree = "<group>"; };
-		0B56B3DB1BF4347F0067EBEA /* CCNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNetworking.h; sourceTree = "<group>"; };
-		0B56B3DC1BF4347F0067EBEA /* CCNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNetworking.m; sourceTree = "<group>"; };
-		0B56B3DD1BF4347F0067EBEA /* NSObject+HXAddtions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+HXAddtions.h"; sourceTree = "<group>"; };
-		0B56B3DE1BF4347F0067EBEA /* NSObject+HXAddtions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+HXAddtions.m"; sourceTree = "<group>"; };
 		0BB606AC1B7989B400D42A16 /* APP_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = APP_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BB606B01B7989B400D42A16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0BB606B11B7989B400D42A16 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0BB606B31B7989B400D42A16 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0BB606B41B7989B400D42A16 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		0BB606BC1B7989B400D42A16 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		0BB606DF1B799B1500D42A16 /* CoreAleetViewManagerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAleetViewManagerVC.h; sourceTree = "<group>"; };
-		0BB606E01B799B1500D42A16 /* CoreAleetViewManagerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAleetViewManagerVC.m; sourceTree = "<group>"; };
 		0BB606E31B799B5300D42A16 /* InteractivePopNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InteractivePopNavigationController.h; sourceTree = "<group>"; };
 		0BB606E41B799B5300D42A16 /* InteractivePopNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InteractivePopNavigationController.m; sourceTree = "<group>"; };
 		0BB606EF1B799BD100D42A16 /* SvUDIDTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SvUDIDTools.h; sourceTree = "<group>"; };
@@ -76,6 +66,10 @@
 		0BB6086D1B79CF6800D42A16 /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = "<group>"; };
 		0BB608701B79D30F00D42A16 /* APP_iOS-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "APP_iOS-Prefix.pch"; sourceTree = "<group>"; };
 		0BB608721B79D6E500D42A16 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		0BBCFF4B1C86827900ABE186 /* CCNetwork.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCNetwork.h; sourceTree = "<group>"; };
+		0BBCFF4C1C86827900ABE186 /* CCNetwork.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCNetwork.m; sourceTree = "<group>"; };
+		0BBCFF4D1C86827900ABE186 /* NSJSONSerialization+LYJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+LYJSON.h"; sourceTree = "<group>"; };
+		0BBCFF4E1C86827900ABE186 /* NSJSONSerialization+LYJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSJSONSerialization+LYJSON.m"; sourceTree = "<group>"; };
 		162FC064ADBEBDF329190BBA /* libPods-APP_iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-APP_iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		41DD96B67C95C26F8486CA4F /* Pods-APP_iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APP_iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-APP_iOS/Pods-APP_iOS.release.xcconfig"; sourceTree = "<group>"; };
 		B93A43CDD882B914F0952C82 /* Pods-APP_iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-APP_iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-APP_iOS/Pods-APP_iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -142,27 +136,6 @@
 			path = BaseResponseModel;
 			sourceTree = "<group>";
 		};
-		0B56B3CE1BF4334D0067EBEA /* Networking Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0B56B3D71BF433C10067EBEA /* AFAppDotNetAPIClient.h */,
-				0B56B3D81BF433C10067EBEA /* AFAppDotNetAPIClient.m */,
-				0B56B3DA1BF4347F0067EBEA /* LNetworking */,
-			);
-			path = "Networking Extensions";
-			sourceTree = "<group>";
-		};
-		0B56B3DA1BF4347F0067EBEA /* LNetworking */ = {
-			isa = PBXGroup;
-			children = (
-				0B56B3DB1BF4347F0067EBEA /* CCNetworking.h */,
-				0B56B3DC1BF4347F0067EBEA /* CCNetworking.m */,
-				0B56B3DD1BF4347F0067EBEA /* NSObject+HXAddtions.h */,
-				0B56B3DE1BF4347F0067EBEA /* NSObject+HXAddtions.m */,
-			);
-			path = LNetworking;
-			sourceTree = "<group>";
-		};
 		0BB606A31B7989B400D42A16 = {
 			isa = PBXGroup;
 			children = (
@@ -190,7 +163,7 @@
 				0BB606BC1B7989B400D42A16 /* Images.xcassets */,
 				0BB606D71B798F8000D42A16 /* Utility */,
 				0BB606DA1B798F8000D42A16 /* Vendors */,
-				0B56B3CE1BF4334D0067EBEA /* Networking Extensions */,
+				0BBCFF4A1C86827900ABE186 /* Network */,
 				0B1C76161C0D861E00114407 /* Models */,
 				0B1C76091C0D861E00114407 /* Controllers */,
 			);
@@ -231,18 +204,8 @@
 				0BB608711B79D6E500D42A16 /* NullSafe */,
 				0BB606EE1B799BD100D42A16 /* UDID_Tools */,
 				0BB606E21B799B5300D42A16 /* InteractivePopNavigationController */,
-				0BB606DE1B799B1500D42A16 /* CoreAleetViewManagerVC */,
 			);
 			path = Vendors;
-			sourceTree = "<group>";
-		};
-		0BB606DE1B799B1500D42A16 /* CoreAleetViewManagerVC */ = {
-			isa = PBXGroup;
-			children = (
-				0BB606DF1B799B1500D42A16 /* CoreAleetViewManagerVC.h */,
-				0BB606E01B799B1500D42A16 /* CoreAleetViewManagerVC.m */,
-			);
-			path = CoreAleetViewManagerVC;
 			sourceTree = "<group>";
 		};
 		0BB606E21B799B5300D42A16 /* InteractivePopNavigationController */ = {
@@ -270,6 +233,17 @@
 				0BB608721B79D6E500D42A16 /* NullSafe.m */,
 			);
 			path = NullSafe;
+			sourceTree = "<group>";
+		};
+		0BBCFF4A1C86827900ABE186 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0BBCFF4B1C86827900ABE186 /* CCNetwork.h */,
+				0BBCFF4C1C86827900ABE186 /* CCNetwork.m */,
+				0BBCFF4D1C86827900ABE186 /* NSJSONSerialization+LYJSON.h */,
+				0BBCFF4E1C86827900ABE186 /* NSJSONSerialization+LYJSON.m */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		36FE9EC8A8A4F9BB45CAC220 /* Pods */ = {
@@ -323,6 +297,7 @@
 				TargetAttributes = {
 					0BB606AB1B7989B400D42A16 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = NHFM69V8J8;
 					};
 				};
 			};
@@ -414,18 +389,16 @@
 				0BB606F11B799BD100D42A16 /* SvUDIDTools.m in Sources */,
 				0B1C76241C0D861E00114407 /* BaseRequestModel.m in Sources */,
 				0BB606F41B799D0600D42A16 /* CCUtility.m in Sources */,
+				0BBCFF501C86827900ABE186 /* NSJSONSerialization+LYJSON.m in Sources */,
 				0B1C762D1C0D923D00114407 /* CCWebViewController.m in Sources */,
 				0BB606B51B7989B400D42A16 /* AppDelegate.m in Sources */,
+				0BBCFF4F1C86827900ABE186 /* CCNetwork.m in Sources */,
 				0BB606E51B799B5300D42A16 /* InteractivePopNavigationController.m in Sources */,
 				0B1C761D1C0D861E00114407 /* BaseTextViewController.m in Sources */,
 				0B1C76251C0D861E00114407 /* BaseResponseModel.m in Sources */,
 				0BB608521B79A13000D42A16 /* CCShareValue.m in Sources */,
-				0B56B3DF1BF4347F0067EBEA /* CCNetworking.m in Sources */,
-				0B56B3D91BF433C10067EBEA /* AFAppDotNetAPIClient.m in Sources */,
-				0BB606E11B799B1500D42A16 /* CoreAleetViewManagerVC.m in Sources */,
 				0BB606B21B7989B400D42A16 /* main.m in Sources */,
 				0B1C76081C0D85A200114407 /* CCImageTitleButton.m in Sources */,
-				0B56B3E01BF4347F0067EBEA /* NSObject+HXAddtions.m in Sources */,
 				0B1C761F1C0D861E00114407 /* BaseViewController.m in Sources */,
 				0BB608731B79D6E500D42A16 /* NullSafe.m in Sources */,
 				0B1C76221C0D861E00114407 /* TestViewController.m in Sources */,
@@ -472,7 +445,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -509,7 +482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -522,12 +495,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/APP_iOS/APP_iOS-Prefix.pch";
 				INFOPLIST_FILE = APP_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "L.$(PRODUCT_NAME:rfc1034identifier)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/APP_iOS/Vendors",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihj.tttt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -538,6 +517,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/APP_iOS/APP_iOS-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -548,7 +529,11 @@
 				INFOPLIST_FILE = APP_iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "L.$(PRODUCT_NAME:rfc1034identifier)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/APP_iOS/Vendors",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lihj.tttt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
