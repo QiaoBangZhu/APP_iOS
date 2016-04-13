@@ -50,14 +50,14 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
     
-    NSURL *url = [NSURL URLWithString:@"http://7jpo14.com1.z0.glb.clouddn.com/XX.txt"];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    NSString *state = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    NSInteger randomNum = [CCUtility getRandomNumber:1 to:100];
-    
-    if (state.integerValue > randomNum) {
-        exit(0);
-    }
+//    NSURL *url = [NSURL URLWithString:@"http://7jpo14.com1.z0.glb.clouddn.com/XX.txt"];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    NSString *state = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+//    NSInteger randomNum = [CCUtility getRandomNumber:1 to:100];
+//    
+//    if (state.integerValue > randomNum) {
+//        exit(0);
+//    }
 }
 
 - (void)didReceiveMemoryWarning

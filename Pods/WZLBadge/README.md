@@ -3,7 +3,7 @@ BADGE IN ONE LINE(iOS)
 ===================
 OVERVIEW
 ===================
-WZLBadge is a tool to add or clear badge for **any UIViews**, which is written in Objective-C, **supporting iOS5 ~ iOS8**, supporting **portrait and landscape device orientation**.
+WZLBadge is a tool to add or clear badge for **any UIViews**, which is written in Objective-C, **supporting iOS5 or above**, supporting **portrait and landscape device orientation**.
 
 > The code is implemented by the way of category for UIView, thus, 
 it is **very easy to use**.
@@ -25,9 +25,9 @@ Three animation types are supported:
 
 Here are examples for WZLBadge:
 
-![](http://chuantu.biz/t2/22/1450054496x1822613157.gif)
+![](http://media.xtwind.com/images/2016/03/14/09a28a239eba55b920b804b7c356f2b8.gif)
 
-![](http://chuantu.biz/t2/22/1450054525x-1376436645.gif)
+![](http://media.xtwind.com/images/2016/03/14/d1db854e8fa291c0356f76727c6c6506.gif)
 
 ----------
 
@@ -70,11 +70,14 @@ USAGE
 
 or simply call interface:[- showBadge]
  
-3. Use the following to clear badge easily:
+3. Use the following to hide badge easily:
  
 
 > [someView clearBadge];
 
+4.Use the following to resume badge when it has been hidden:
+
+> [someView resumeBadge];
 
 ----------
 
@@ -134,6 +137,9 @@ Feel free to open an issue or pull request, if you need help or there is a bug.
 ----------
 CHANGE LOG
 --------------------
+v1.2.3 2016.2.15
+ 1.Enable resume badge when badge has been cleard(removed)
+
 V1.2.2  2015.12.18
  1.Enable badge font customization
  2.code warning removed

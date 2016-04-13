@@ -1,23 +1,39 @@
 PODS:
   - ActionSheetPicker-3.0 (2.0.5)
-  - AFNetworking (3.0.4):
-    - AFNetworking/NSURLSession (= 3.0.4)
-    - AFNetworking/Reachability (= 3.0.4)
-    - AFNetworking/Security (= 3.0.4)
-    - AFNetworking/Serialization (= 3.0.4)
-    - AFNetworking/UIKit (= 3.0.4)
-  - AFNetworking/NSURLSession (3.0.4):
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.0.4)
-  - AFNetworking/Security (3.0.4)
-  - AFNetworking/Serialization (3.0.4)
-  - AFNetworking/UIKit (3.0.4):
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - CYLTabBarController (1.2.1)
+  - BlocksKit (2.2.5):
+    - BlocksKit/All (= 2.2.5)
+  - BlocksKit/All (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+    - BlocksKit/MessageUI
+    - BlocksKit/UIKit
+  - BlocksKit/Core (2.2.5)
+  - BlocksKit/DynamicDelegate (2.2.5)
+  - BlocksKit/MessageUI (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - BlocksKit/UIKit (2.2.5):
+    - BlocksKit/Core
+    - BlocksKit/DynamicDelegate
+  - CYLTabBarController (1.2.7)
   - DateTools (1.7.0)
-  - IQKeyboardManager (4.0.0)
+  - FDFullscreenPopGesture (1.1)
+  - IQKeyboardManager (4.0.1)
   - JCAlertView (1.1.5)
   - MJRefresh (3.1.0)
   - NJKWebViewProgress (0.2.3):
@@ -26,22 +42,26 @@ PODS:
   - NJKWebViewProgress/Core (0.2.3)
   - NJKWebViewProgress/ProgressView (0.2.3)
   - QBImagePickerController (3.4.0)
-  - SDCycleScrollView (1.61):
+  - SDCycleScrollView (1.62):
     - SDWebImage (~> 3.7)
   - SDWebImage (3.7.5):
     - SDWebImage/Core (= 3.7.5)
   - SDWebImage/Core (3.7.5)
-  - SVProgressHUD (1.1.3)
-  - WZLBadge (1.2.3)
-  - YYKit (1.0.1):
-    - YYKit/no-arc (= 1.0.1)
-  - YYKit/no-arc (1.0.1)
+  - SVProgressHUD (2.0.3)
+  - TYAlertController (1.1.3)
+  - WZLBadge (1.2.4)
+  - YYKit (1.0.4):
+    - YYKit/no-arc (= 1.0.4)
+  - YYKit/no-arc (1.0.4)
+  - ZYCornerRadius (0.8.1)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - AFNetworking
+  - BlocksKit
   - CYLTabBarController
   - DateTools
+  - FDFullscreenPopGesture
   - IQKeyboardManager
   - JCAlertView
   - MJRefresh
@@ -49,23 +69,29 @@ DEPENDENCIES:
   - QBImagePickerController
   - SDCycleScrollView
   - SVProgressHUD
+  - TYAlertController
   - WZLBadge
   - YYKit
+  - ZYCornerRadius
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: 8312778b6815578e6a86d630fbcf31dc94c534e7
-  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  CYLTabBarController: 62ee700d59dc1f42777053e6254933f499ab4564
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BlocksKit: 7f422b971407001178d181a43b99014ea2591fe6
+  CYLTabBarController: 639c5eca91cc564671bfd876e5fcc1a39cc49bf7
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  IQKeyboardManager: b91928f7927ba55a5829b4dcf4b7a6736ac9fc22
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  IQKeyboardManager: 0c11a0cb402a621f7aa1aff506f60ab6d2388969
   JCAlertView: c65a7b298b8b497b3db783d82f719b88f4914869
   MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
   QBImagePickerController: d54cf93db6decf26baf6ed3472f336ef35cae022
-  SDCycleScrollView: a002d85b30cfa9d0ac74069cd3973ca19ff4f22f
+  SDCycleScrollView: ae016cb4cc4036523917f146ede6f7b11d408f6a
   SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
-  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
-  WZLBadge: 2403831b70e65fefc526790c9dc3ca7f99992bf2
-  YYKit: 8b618ca8d8cefa534d8d4fe2cad10fe9fbd030ed
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+  TYAlertController: 849283e546e297d4c33708d81d12605901adbba7
+  WZLBadge: 6c63f68fa5943d472fe6b1048929a4e479f6e43d
+  YYKit: 71f7e48cc5de6c69b5c35fee4d3978dac3267041
+  ZYCornerRadius: 485a8e9304d16d1620641054a08b9c0f55dd512c
 
 COCOAPODS: 0.39.0

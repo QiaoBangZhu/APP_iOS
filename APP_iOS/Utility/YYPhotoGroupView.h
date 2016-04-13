@@ -36,4 +36,5 @@
 
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion;
 - (void)dismiss;
+
 @end

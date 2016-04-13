@@ -13,11 +13,12 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #import "BaseViewController.h"
-#import "CCMacro.h"
-#import "CCShareValue.h"
-#import "CCUtility.h"
+#import "DKMacros.h"
+#import "DKShareValueManager.h"
+#import "DKManager.h"
 #import "SVProgressHUD.h"
-#import "CCNetwork.h"
+#import "DKNetAPIClient.h"
 #import <YYKit/YYKit.h>
+#import "BlocksKit+UIKit.h"
 
 #endif

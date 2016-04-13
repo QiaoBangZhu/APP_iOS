@@ -16,6 +16,10 @@ target "APP_iOS" do
     pod 'WZLBadge'
     pod 'ActionSheetPicker-3.0'
     pod 'QBImagePickerController' #Version >= 3.0.0 : iOS 8 or later (Using PhotoKit) Version < 3.0.0 : iOS 6 or later (Using AssetsLibrary)
+    pod 'TYAlertController'
+    pod 'ZYCornerRadius'
+    pod 'FDFullscreenPopGesture'
+    pod 'BlocksKit'
     
 end
 

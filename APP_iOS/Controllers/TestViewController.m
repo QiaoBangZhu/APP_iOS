@@ -7,8 +7,9 @@
 //
 
 #import "TestViewController.h"
-#import "CCWebViewController.h"
+#import "DKWebViewController.h"
 #import "YYPhotoGroupView.h"
+#import "DKNetAPIClient.h"
 
 @interface TestViewController () <UITableViewDelegate, UITableViewDataSource>
 
@@ -25,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+        
     
     [self setLeftBarButtonWithTitle:@"Left" withBlock:^(NSInteger tag) {
         NSLog(@"heloo");
@@ -138,8 +140,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *className = self.classNames[indexPath.row];
-    if ([className isEqualToString:@"CCWebViewController"]) {
-        CCWebViewController *ctrl = [[CCWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.cnblogs.com/lingyunhu/p/3855906.html"]];
+    if ([className isEqualToString:@"DKWebViewController"]) {
+        DKWebViewController *ctrl = [[DKWebViewController alloc] initWithURL:[NSURL URLWithString:@"http://www.cnblogs.com/lingyunhu/p/3855906.html"]];
         [self.navigationController pushViewController:ctrl animated:YES];
     }
     else if ([className isEqualToString:@"YYPhotoGroupView"]) {

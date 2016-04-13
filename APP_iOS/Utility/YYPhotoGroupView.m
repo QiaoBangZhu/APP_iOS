@@ -131,7 +131,7 @@
         _imageView.image = nil;
         return;
     }
-    
+
     @weakify(self);
     [_imageView setImageWithURL:item.largeImageURL placeholder:item.thumbImage options:kNilOptions progress:^(NSInteger receivedSize, NSInteger expectedSize) {
         @strongify(self);
